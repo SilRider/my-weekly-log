@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MY GAME LOG · 2026 W44 effect</title>
+<link rel="stylesheet" href="../../../site-files/styles/common-styles/site-common-base-style.css">
+<link rel="stylesheet" href="../../../site-files/styles/weekly-effect-styles/dark-default-style/weekly-dark-style.css">
+</head>
+<body class="ko">
+<div class="bar">
+  <b><a href="../../../index.html">MY GAME LOG</a></b>
+  <a href="../../../index.html"><span class="ko">소개</span><span class="en">About</span></a>
+  <a href="../../../site-files/archive-page/weekly-log-archive-list.html" class="on"><span class="ko">기록 (년·월·주)</span><span class="en">Log (year / month / week)</span></a>
+  <div class="right">
+    <div class="lang"><button data-l="ko">한국어</button><button data-l="en">English</button></div>
+  </div>
+</div>
+<main>
+  <canvas id="cv"></canvas>
+  <p class="dim"><span class="ko">이번 주의 기법: 캔버스 파티클 + 마우스 끌림.</span><span class="en">This week's technique: canvas particles pulled toward the mouse.</span> <a href="weekly-post-page.html"><span class="ko">← 글로 돌아가기</span><span class="en">← Back to the post</span></a></p>
+</main>
+<script src="../../../site-files/scripts/common-scripts/site-common-language.js"></script>
+<script>
+const cv=document.getElementById('cv'),c=cv.getContext('2d');let mx=-1,my=-1;
+cv.width=cv.clientWidth*devicePixelRatio;cv.height=360*devicePixelRatio;
+cv.addEventListener('mousemove',e=>{const r=cv.getBoundingClientRect();mx=(e.clientX-r.left)*cv.width/r.width;my=(e.clientY-r.top)*cv.height/r.height});
+const P=Array.from({length:220},()=>({x:Math.random()*cv.width,y:Math.random()*cv.height,vx:0,vy:0,h:Math.random()*60+150}));
+(function f(){c.fillStyle='rgba(5,6,11,.18)';c.fillRect(0,0,cv.width,cv.height);
+  for(const p of P){if(mx>=0){const dx=mx-p.x,dy=my-p.y,d=Math.hypot(dx,dy)+30;p.vx+=dx/d*.6;p.vy+=dy/d*.6}
+    p.vx*=.95;p.vy*=.95;p.x+=p.vx+Math.sin(p.y/40)*.3;p.y+=p.vy;
+    c.fillStyle='hsl('+p.h+',90%,65%)';c.beginPath();c.arc(p.x,p.y,2*devicePixelRatio,0,7);c.fill()}
+  requestAnimationFrame(f)})();
+</script>
+</body>
+</html>

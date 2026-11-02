@@ -1,0 +1,6 @@
+/* Look of index.html only (the profile page). */
+.hero{display:flex;gap:28px;align-items:center;padding:40px 0}
+.avatar{width:132px;height:132px;border-radius:50%;flex:none;background:conic-gradient(from 0deg,var(--ac),var(--ac2),var(--ac));display:grid;place-items:center;font-size:44px;animation:spin 12s linear infinite}
+.avatar i{font-style:normal;background:var(--bg);width:120px;height:120px;border-radius:50%;display:grid;place-items:center;animation:spin 12s linear infinite reverse}
+@keyframes spin{to{transform:rotate(360deg)}}
+.chips span{display:inline-block;margin:4px 6px 0 0;padding:2px 10px;border:1px solid var(--line);border-radius:99px;font-size:13px}

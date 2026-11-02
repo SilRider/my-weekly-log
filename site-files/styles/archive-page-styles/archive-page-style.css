@@ -1,0 +1,4 @@
+/* Look of the year / month / week list page. */
+.year{margin-top:28px;font-size:22px}.month{margin:14px 0 4px;color:var(--ac2)}
+.week{display:flex;justify-content:space-between;gap:12px;padding:10px 14px;margin:6px 0;background:#121624;border:1px solid var(--line);border-radius:10px;color:var(--fg)}
+a.week:hover{border-color:var(--ac);text-decoration:none}.week small{color:var(--dim)}
